@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+遥控器地址.txt
+*.zip
+dist/
