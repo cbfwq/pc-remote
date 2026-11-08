@@ -21,8 +21,8 @@
 
 | 文件 | 给谁 |
 |---|---|
-| **[pc-remote-v1.0.0-windows.zip](https://github.com/cbfwq/pc-remote/releases/latest)** | **大多数人下这个**。解压后双击 `scripts\\start_hidden.vbs`，包内附中文《使用说明.txt》 |
-| [pc-remote-skill-v1.0.0.zip](https://github.com/cbfwq/pc-remote/releases/latest) | 用 WorkBuddy 的人：放到 `~/.workbuddy/skills/` 下即可 |
+| **[pc-remote-v1.0.1-windows.zip](https://github.com/cbfwq/pc-remote/releases/latest)** | **大多数人下这个**。解压后双击 `scripts\\start_hidden.vbs`，包内附中文《使用说明.txt》 |
+| [pc-remote-skill-v1.0.1.zip](https://github.com/cbfwq/pc-remote/releases/latest) | 用 WorkBuddy 的人：放到 `~/.workbuddy/skills/` 下即可 |
 
 ## 功能
 
@@ -39,7 +39,7 @@
 
 准备：电脑装 Python 3.9+（勾选 Add to PATH），手机和电脑连同一个 Wi-Fi。
 
-1. 从 [Releases](https://github.com/cbfwq/pc-remote/releases/latest) 下载 `pc-remote-v1.0.0-windows.zip` 并解压（或 Code → Download ZIP）
+1. 从 [Releases](https://github.com/cbfwq/pc-remote/releases/latest) 下载 `pc-remote-v1.0.1-windows.zip` 并解压（或 Code → Download ZIP）
 2. 双击 `scripts\start_hidden.vbs` —— 不会弹任何窗口，这是正常的
 3. 打开同目录生成的 `遥控器地址.txt`，把里面的地址（如 `http://192.168.1.5:8765`）输进手机浏览器
 4. 建议在手机浏览器菜单里「添加到主屏幕」，之后像 App 一样点开
