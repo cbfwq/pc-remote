@@ -231,25 +231,25 @@ PAGE = r"""<!DOCTYPE html>
   .sep{height:1px;background:#1e2637;margin:1px 2px}
 
   /* 圆盘主控：一整块盘，四向键长在盘面上 */
-  .disc{position:relative;width:232px;height:232px;margin:2px auto 0;border-radius:50%;
+  .disc{position:relative;width:204px;height:204px;margin:0 auto;border-radius:50%;
       background:#171d29;border:1px solid #2b3648;
       box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 2px 0 #0b0e14}
-  .disc .cv{position:absolute;left:50%;top:16px;bottom:16px;width:1px;margin-left:-.5px;background:#212a3a}
-  .disc .ch{position:absolute;top:50%;left:16px;right:16px;height:1px;margin-top:-.5px;background:#212a3a}
-  .zone{position:absolute;width:74px;height:74px;border-radius:50%;background:transparent;
+  .disc .cv{position:absolute;left:50%;top:14px;bottom:14px;width:1px;margin-left:-.5px;background:#212a3a}
+  .disc .ch{position:absolute;top:50%;left:14px;right:14px;height:1px;margin-top:-.5px;background:#212a3a}
+  .zone{position:absolute;width:66px;height:66px;border-radius:50%;background:transparent;
       border:0;box-shadow:none;display:flex;align-items:center;justify-content:center;
       padding:0;gap:0;transition:background .12s ease}
   .zone:active,.zone.hit{background:#2a3448;transform:none}
-  .z-up{left:50%;top:6px;margin-left:-37px}
-  .z-dn{left:50%;bottom:6px;margin-left:-37px}
-  .z-lf{left:6px;top:50%;margin-top:-37px}
-  .z-rt{right:6px;top:50%;margin-top:-37px}
-  .core{position:absolute;left:50%;top:50%;width:108px;height:108px;margin:-54px 0 0 -54px;
+  .z-up{left:50%;top:5px;margin-left:-33px}
+  .z-dn{left:50%;bottom:5px;margin-left:-33px}
+  .z-lf{left:5px;top:50%;margin-top:-33px}
+  .z-rt{right:5px;top:50%;margin-top:-33px}
+  .core{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;
       border-radius:50%;background:linear-gradient(160deg,#2f6bff,#1b47c9);
       box-shadow:0 3px 0 #12307e, inset 0 1px 0 rgba(255,255,255,.18);
       display:flex;align-items:center;justify-content:center;padding:0;gap:0}
   .core:active,.core.hit{background:linear-gradient(160deg,#3f79ff,#2252dd)}
-  .legend{font-size:11px;color:#5d6b82;text-align:center;line-height:1.7;margin-top:9px}
+  .legend{font-size:11px;color:#5d6b82;text-align:center;line-height:1.6;margin-top:6px}
 
   /* 触控板 */
   #pad{flex:1;min-height:230px;border-radius:22px;background:
@@ -330,33 +330,15 @@ PAGE = r"""<!DOCTYPE html>
     <button class="h58" onclick="k('volup')">🔊<span class="sub">音量 +</span></button>
   </div>
 
-  <div class="sep"></div>
-
-  <div class="row4">
-    <button class="h58" onclick="k('left')">◀◀<span class="sub">后退 5s</span></button>
-    <button class="h58" onclick="k('right')">▶▶<span class="sub">前进 5s</span></button>
-    <button class="h58" onclick="k('pgup')">⤒<span class="sub">上一集*</span></button>
-    <button class="h58" onclick="k('pgdn')">⤓<span class="sub">下一集*</span></button>
-  </div>
-
   <div class="row4">
     <button class="h58" onclick="k('fullscreen')">⛶<span class="sub">全屏</span></button>
     <button class="h58" onclick="k('esc')">⎋<span class="sub">退出全屏</span></button>
-    <button class="h58" onclick="k('stop')">■<span class="sub">停止</span></button>
     <button class="h58" onclick="k('alttab')">⇄<span class="sub">切窗口</span></button>
+    <button class="h58" onclick="k('winp')">📺<span class="sub">投影</span></button>
   </div>
 
-  <div class="sep"></div>
-
-  <div class="row3">
-    <button class="h58" onclick="k('winp')">📺<span class="sub">投影 Win+P</span></button>
-    <button class="h58" onclick="k('wink')">📶<span class="sub">无线投屏</span></button>
-    <button class="h58" onclick="k('project_settings')">📱<span class="sub">手机投电脑</span></button>
-  </div>
-
-  <div class="hint" style="text-align:center;line-height:1.7">
-    带 * 的按钮用于不认多媒体键的播放器<br>
-    点底部蓝色圆钮说话：暂停 / 下一集 / 静音 / 大点声
+  <div class="hint" style="text-align:center;line-height:1.6">
+    快退快进用「触控板」页拖进度条 · 点底部蓝钮可语音
   </div>
 </div>
 
