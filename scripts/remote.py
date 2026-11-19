@@ -208,10 +208,10 @@ PAGE = r"""<!DOCTYPE html>
   .hint{font-size:12px;color:#5d6b82}
 
   .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#161b26;padding:5px;border-radius:16px}
-  .tabs button{height:44px;border-radius:12px;background:transparent;font-size:15px;color:#8a97ad;font-weight:600}
+  .tabs button{height:40px;border-radius:11px;background:transparent;font-size:14px;color:#8a97ad;font-weight:600}
   .tabs button.on{background:#2a3448;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35)}
 
-  .view{display:none;flex-direction:column;gap:10px;flex:1;min-height:0}
+  .view{display:none;flex-direction:column;gap:8px;flex:1;min-height:0}
   .view.on{display:flex}
 
   button{border:0;border-radius:18px;background:#1b2130;color:#e8ecf3;font-size:18px;font-weight:600;
@@ -227,29 +227,31 @@ PAGE = r"""<!DOCTYPE html>
   .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .h76{height:76px}.h96{height:96px}.h58{height:56px;font-size:14px;border-radius:16px}
+  .h50{height:50px;font-size:13px;border-radius:15px}
+  .h50 .sub{font-size:10px;margin-top:1px}
   .h58 .sub{font-size:10px}
   .sep{height:1px;background:#1e2637;margin:1px 2px}
 
   /* 圆盘主控：一整块盘，四向键长在盘面上 */
-  .disc{position:relative;width:204px;height:204px;margin:0 auto;border-radius:50%;
+  .disc{position:relative;width:196px;height:196px;margin:0 auto;border-radius:50%;
       background:#171d29;border:1px solid #2b3648;
       box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 2px 0 #0b0e14}
-  .disc .cv{position:absolute;left:50%;top:14px;bottom:14px;width:1px;margin-left:-.5px;background:#212a3a}
-  .disc .ch{position:absolute;top:50%;left:14px;right:14px;height:1px;margin-top:-.5px;background:#212a3a}
-  .zone{position:absolute;width:66px;height:66px;border-radius:50%;background:transparent;
+  .disc .cv{position:absolute;left:50%;top:13px;bottom:13px;width:1px;margin-left:-.5px;background:#212a3a}
+  .disc .ch{position:absolute;top:50%;left:13px;right:13px;height:1px;margin-top:-.5px;background:#212a3a}
+  .zone{position:absolute;width:64px;height:64px;border-radius:50%;background:transparent;
       border:0;box-shadow:none;display:flex;align-items:center;justify-content:center;
       padding:0;gap:0;transition:background .12s ease}
   .zone:active,.zone.hit{background:#2a3448;transform:none}
-  .z-up{left:50%;top:5px;margin-left:-33px}
-  .z-dn{left:50%;bottom:5px;margin-left:-33px}
-  .z-lf{left:5px;top:50%;margin-top:-33px}
-  .z-rt{right:5px;top:50%;margin-top:-33px}
-  .core{position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;
+  .z-up{left:50%;top:4px;margin-left:-32px}
+  .z-dn{left:50%;bottom:4px;margin-left:-32px}
+  .z-lf{left:4px;top:50%;margin-top:-32px}
+  .z-rt{right:4px;top:50%;margin-top:-32px}
+  .core{position:absolute;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;
       border-radius:50%;background:linear-gradient(160deg,#2f6bff,#1b47c9);
       box-shadow:0 3px 0 #12307e, inset 0 1px 0 rgba(255,255,255,.18);
       display:flex;align-items:center;justify-content:center;padding:0;gap:0}
   .core:active,.core.hit{background:linear-gradient(160deg,#3f79ff,#2252dd)}
-  .legend{font-size:11px;color:#5d6b82;text-align:center;line-height:1.6;margin-top:6px}
+  .legend{font-size:11px;color:#5d6b82;text-align:center;line-height:1.6;margin-top:4px}
 
   /* 触控板 */
   #pad{flex:1;min-height:230px;border-radius:22px;background:
@@ -325,20 +327,21 @@ PAGE = r"""<!DOCTYPE html>
   <div class="legend">▲▼ 上一条 / 下一条　·　⏮⏭ 上一集 / 下一集</div>
 
   <div class="row3">
-    <button class="h58" onclick="k('voldown')">🔉<span class="sub">音量 −</span></button>
-    <button class="h58" onclick="k('mute')">🔇<span class="sub">静音</span></button>
-    <button class="h58" onclick="k('volup')">🔊<span class="sub">音量 +</span></button>
+    <button class="h50" onclick="k('voldown')">🔉<span class="sub">音量 −</span></button>
+    <button class="h50" onclick="k('mute')">🔇<span class="sub">静音</span></button>
+    <button class="h50" onclick="k('volup')">🔊<span class="sub">音量 +</span></button>
   </div>
 
-  <div class="row4">
-    <button class="h58" onclick="k('fullscreen')">⛶<span class="sub">全屏</span></button>
-    <button class="h58" onclick="k('esc')">⎋<span class="sub">退出全屏</span></button>
-    <button class="h58" onclick="k('alttab')">⇄<span class="sub">切窗口</span></button>
-    <button class="h58" onclick="k('winp')">📺<span class="sub">投影</span></button>
+  <div class="row3">
+    <button class="h50" onclick="k('fullscreen')">⛶<span class="sub">全屏</span></button>
+    <button class="h50" onclick="k('esc')">⎋<span class="sub">退出全屏</span></button>
+    <button class="h50" onclick="k('alttab')">⇄<span class="sub">切窗口</span></button>
   </div>
 
-  <div class="hint" style="text-align:center;line-height:1.6">
-    快退快进用「触控板」页拖进度条 · 点底部蓝钮可语音
+  <div class="row3">
+    <button class="h50" onclick="k('winp')">📺<span class="sub">投影</span></button>
+    <button class="h50" onclick="k('wink')">📶<span class="sub">无线显示器</span></button>
+    <button class="h50" onclick="k('project_settings')">📱<span class="sub">手机投电脑</span></button>
   </div>
 </div>
 
