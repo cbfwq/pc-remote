@@ -230,6 +230,27 @@ PAGE = r"""<!DOCTYPE html>
   .h58 .sub{font-size:10px}
   .sep{height:1px;background:#1e2637;margin:1px 2px}
 
+  /* 圆盘主控：一整块盘，四向键长在盘面上 */
+  .disc{position:relative;width:232px;height:232px;margin:2px auto 0;border-radius:50%;
+      background:#171d29;border:1px solid #2b3648;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 2px 0 #0b0e14}
+  .disc .cv{position:absolute;left:50%;top:16px;bottom:16px;width:1px;margin-left:-.5px;background:#212a3a}
+  .disc .ch{position:absolute;top:50%;left:16px;right:16px;height:1px;margin-top:-.5px;background:#212a3a}
+  .zone{position:absolute;width:74px;height:74px;border-radius:50%;background:transparent;
+      border:0;box-shadow:none;display:flex;align-items:center;justify-content:center;
+      padding:0;gap:0;transition:background .12s ease}
+  .zone:active,.zone.hit{background:#2a3448;transform:none}
+  .z-up{left:50%;top:6px;margin-left:-37px}
+  .z-dn{left:50%;bottom:6px;margin-left:-37px}
+  .z-lf{left:6px;top:50%;margin-top:-37px}
+  .z-rt{right:6px;top:50%;margin-top:-37px}
+  .core{position:absolute;left:50%;top:50%;width:108px;height:108px;margin:-54px 0 0 -54px;
+      border-radius:50%;background:linear-gradient(160deg,#2f6bff,#1b47c9);
+      box-shadow:0 3px 0 #12307e, inset 0 1px 0 rgba(255,255,255,.18);
+      display:flex;align-items:center;justify-content:center;padding:0;gap:0}
+  .core:active,.core.hit{background:linear-gradient(160deg,#3f79ff,#2252dd)}
+  .legend{font-size:11px;color:#5d6b82;text-align:center;line-height:1.7;margin-top:9px}
+
   /* 触控板 */
   #pad{flex:1;min-height:230px;border-radius:22px;background:
       radial-gradient(120% 90% at 50% 0%,#1a2130 0%,#141922 70%);
@@ -283,11 +304,25 @@ PAGE = r"""<!DOCTYPE html>
 
 <!-- ============ 按键 ============ -->
 <div class="view on" id="v1">
-  <div class="row3">
-    <button class="h76" onclick="k('prev')">⏮<span class="sub">上一集</span></button>
-    <button class="primary h96" onclick="k('playpause')">⏯<span class="sub">播放 / 暂停</span></button>
-    <button class="h76" onclick="k('next')">⏭<span class="sub">下一集</span></button>
+  <div class="disc">
+    <div class="cv"></div><div class="ch"></div>
+    <button class="zone z-up" onclick="k('up')" aria-label="上一条">
+      <svg width="26" height="26" viewBox="0 0 18 18"><path d="M9 3 L15.4 11 L2.6 11 Z" fill="#aab6c9"/></svg>
+    </button>
+    <button class="zone z-dn" onclick="k('down')" aria-label="下一条">
+      <svg width="26" height="26" viewBox="0 0 18 18"><path d="M9 15 L2.6 7 L15.4 7 Z" fill="#aab6c9"/></svg>
+    </button>
+    <button class="zone z-lf" onclick="k('prev')" aria-label="上一集">
+      <svg width="23" height="23" viewBox="0 0 18 18"><rect x="1.6" y="3" width="2.6" height="12" rx="1.1" fill="#aab6c9"/><path d="M15.2 3.2 L6.4 9 L15.2 14.8 Z" fill="#aab6c9"/></svg>
+    </button>
+    <button class="zone z-rt" onclick="k('next')" aria-label="下一集">
+      <svg width="23" height="23" viewBox="0 0 18 18"><rect x="13.8" y="3" width="2.6" height="12" rx="1.1" fill="#aab6c9"/><path d="M2.8 3.2 L11.6 9 L2.8 14.8 Z" fill="#aab6c9"/></svg>
+    </button>
+    <button class="core" onclick="k('playpause')" aria-label="播放暂停">
+      <svg width="34" height="34" viewBox="0 0 18 18"><path d="M6.4 3.4 L14.8 9 L6.4 14.6 Z" fill="#fff"/></svg>
+    </button>
   </div>
+  <div class="legend">▲▼ 上一条 / 下一条　·　⏮⏭ 上一集 / 下一集</div>
 
   <div class="row3">
     <button class="h58" onclick="k('voldown')">🔉<span class="sub">音量 −</span></button>
@@ -364,6 +399,7 @@ function flash(t){ tip.textContent = t; clearTimeout(flash._t); flash._t = setTi
 
 function k(name, quiet){
   const n = name === 'fullscreen' ? 'full' : name;
+  if (navigator.vibrate) navigator.vibrate(8);
   fetch('/api/key?k=' + encodeURIComponent(n), {cache:'no-store'})
     .then(r => { if(!quiet) flash(r.ok ? '已发送' : '失败'); })
     .catch(() => { if(!quiet) flash('连接断开'); });
